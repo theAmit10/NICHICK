@@ -25,11 +25,18 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	USphereComponent* SphereComp; // this is going to hold some collision information.
 
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	UParticleSystem* PickupFX; // used during effects function.
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void PlayEffects(); // to add some effect during shooting.
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;  // this is used whenever the actor get overlap.
 
 };
