@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "FPSObjectiveActor.generated.h"
 
+class USphereComponent; // we are telling the compiler to check in this class forUSphereComponent. 
+
 UCLASS()
 class NICHICK_API AFPSObjectiveActor : public AActor
 {
@@ -16,6 +18,13 @@ public:
 	AFPSObjectiveActor();
 
 protected:
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* MeshComp; // this will be the sphere or the object so that its visual exits.
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	USphereComponent* SphereComp; // this is going to hold some collision information.
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 

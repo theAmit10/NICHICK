@@ -2,12 +2,19 @@
 
 
 #include "FPSObjectiveActor.h"
+#include "Components/SphereComponent.h"
 
 // Sets default values
 AFPSObjectiveActor::AFPSObjectiveActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComp"));
+	RootComponent = MeshComp; // setting this the root component in the top the herarachy.
+
+	SphereComp = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
+	SphereComp->SetupAttachment(MeshComp); // now we attach the SphereComp to the root component in the herarachy.
 
 }
 
